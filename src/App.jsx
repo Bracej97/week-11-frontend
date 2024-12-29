@@ -7,6 +7,7 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Home from './pages/Home';
 import { IssuesContext, IssuesProvider } from './contexts/IssuesContext';
+import AddIssue from './pages/AddIssue';
 
 function App() {
   const darkTheme = createTheme({
@@ -21,10 +22,11 @@ function App() {
         <IssuesProvider>
           <Router>
             <Routes>
-              <Route path='/' element={<Home />} />
+              <Route path='/' element={<Login />} />
+              <Route path='/home' element={<Home />} />
               <Route path='/login' element={<Login />} />
               <Route path='/signup' element={<Signup />} />
-
+              <Route path='/addissue' element={<AddIssue />} />
             </Routes>
           </Router>
         </IssuesProvider>
