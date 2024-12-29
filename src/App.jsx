@@ -6,6 +6,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Home from './pages/Home';
+import { IssuesContext, IssuesProvider } from './contexts/IssuesContext';
 
 function App() {
   const darkTheme = createTheme({
@@ -17,14 +18,16 @@ function App() {
   return (
     <ThemeProvider theme={darkTheme}>
       <UserProvider>
-        <Router>
-          <Routes>
-            <Route path='/home' element={<Home />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/signup' element={<Signup />} />
+        <IssuesProvider>
+          <Router>
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route path='/login' element={<Login />} />
+              <Route path='/signup' element={<Signup />} />
 
-          </Routes>
-        </Router>
+            </Routes>
+          </Router>
+        </IssuesProvider>
       </UserProvider>
     </ThemeProvider>
   )

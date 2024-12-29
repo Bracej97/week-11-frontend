@@ -38,7 +38,7 @@ function Signup() {
                     loginUser(userName)
 
                     console.log('User signed up and logged in', userName)
-                    navigate('/home');
+                    navigate('/');
                 }
             } else {
                 setError('Could not sign in. Please try again.')

@@ -32,7 +32,7 @@ function Login() {
 
                 localStorage.setItem('authToken', response.data.data.token);
 
-                navigate('/home');
+                navigate('/');
             } else {
                 setError('Could not sign in. Please try again.')
             }
