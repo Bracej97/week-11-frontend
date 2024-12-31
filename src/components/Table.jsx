@@ -9,6 +9,8 @@ import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import { IssuesContext } from "../contexts/IssuesContext";
 import { useContext, useEffect } from 'react';
+import {BrowserRouter as Router, Link} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -38,6 +40,11 @@ export default function StickyHeadTable() {
     setPage(0);
   };
 
+  const navigate = useNavigate();
+  const handleClick = (id) => {
+    navigate(`issue/${id}`);
+  }
+
   return (
     <Paper sx={{ width: '100%', overflow: 'hidden' }}>
       <TableContainer sx={{ maxHeight: 800 }}>
@@ -60,7 +67,8 @@ export default function StickyHeadTable() {
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row) => {
                 return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
+
+                  <TableRow hover role="checkbox" tabIndex={-1} key={row.code} component={Link} to={`/issue/${row.id}`}>
                     {columns.map((column) => {
                       const value = row[column.id];
                       return (
@@ -72,6 +80,7 @@ export default function StickyHeadTable() {
                       );
                     })}
                   </TableRow>
+
                 );
               })}
           </TableBody>
